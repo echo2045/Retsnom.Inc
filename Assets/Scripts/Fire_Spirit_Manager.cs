@@ -7,6 +7,7 @@ public class Fire_Spirit_Manager : MonoBehaviour
     public Animator animator;
 
     public GameObject Player;
+    public GameObject fireball;
 
 
     public float FollowSpeed = 5f;
@@ -25,20 +26,38 @@ public class Fire_Spirit_Manager : MonoBehaviour
 
     }
 
+    void Start()
+    {
+        fireball.SetActive(true);
+        StartCoroutine(Shoot());
+    } 
+
     // Update is called once per frame
     void Update()
     {
         distance = Vector2.Distance(transform.position, Player.transform.position);
-        //Vector3 dir = Player.transform.position - transform.position;
-        //dir.Normalize();
-        //Vector3 offset.Normalize(dir);
 
         if (animator.GetBool("Fight") && distance >= 1)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, FollowSpeed*Time.deltaTime);
         }
-        
-
+       
       
+    }
+
+    private IEnumerator Shoot()
+    {
+        while (true)
+        {
+            
+            if (animator.GetBool("Fight"))
+            {
+                
+                Instantiate(fireball, transform.position, Quaternion.identity);
+                Debug.Log("hi");
+            }
+            yield return new WaitForSeconds(3f);
+        }
+       
     }
 }
