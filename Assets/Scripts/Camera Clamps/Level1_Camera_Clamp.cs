@@ -11,7 +11,7 @@ public class Level1_Camera_Clamp : MonoBehaviour
     void Update()
     {
 
-        transform.position = new Vector3(Mathf.Clamp(targetToFollow.position.x, 0.25f, 17.75f), Mathf.Clamp(targetToFollow.position.y, -2.82f, 12.85f), transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(targetToFollow.position.x, -2.44f, 20.47f), Mathf.Clamp(targetToFollow.position.y, -3.86f, 13.88f), transform.position.z);
 
     }
 }
